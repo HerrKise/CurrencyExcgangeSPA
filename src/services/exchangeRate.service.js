@@ -5,7 +5,7 @@ const exchangeRateEndpoint = "/fixer/latest?";
 const exchangeRateService = {
     get: async (symbols, base) => {
         const { data } = await httpService.get(
-            exchangeRateEndpoint + "symbols=" + symbols + "&base=" + base
+            exchangeRateEndpoint + `symbols=${symbols}&base=${base}`
         );
         return data.rates;
     }

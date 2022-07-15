@@ -1,13 +1,6 @@
-import { useEffect, useState } from "react";
-// import symbolsService from "./services/symbols.service";
-import fetchAll from "./api/symbols.api";
 import PropTypes from "prop-types";
 
-const SelectField = ({ name, onChange, value }) => {
-    const [symbols, setSymbols] = useState();
-    useEffect(() => {
-        fetchAll().then((data) => setSymbols(data.symbols));
-    }, []);
+const SelectField = ({ symbols, name, onChange, value }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });
     };
@@ -49,6 +42,7 @@ const SelectField = ({ name, onChange, value }) => {
 };
 
 SelectField.propTypes = {
+    symbols: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     name: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func
