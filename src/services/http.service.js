@@ -4,7 +4,7 @@ import configFile from "../config.json";
 const http = axios.create({
     baseURL: configFile.apiEndpoint,
     headers: {
-        apikey: "ktm0bNPbeh2IlGI3UtvF2sjViGkOqjNH"
+        apikey: process.env.REACT_APP_API_KEY
     }
 });
 

@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 // import getRates from "../api/exchangeRate.api";
 import PropTypes from "prop-types";
-// import exchangeRateService from "../services/exchangeRate.service";
+import exchangeRateService from "../services/exchangeRate.service";
 
 const Table = ({ value, symbols }) => {
     const [rates, setRates] = useState();
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/todos/1").then((data) =>
-            setRates(data)
-        );
-        // exchangeRateService.get(symbols, value).then((data) => setRates(data));
-    });
+        exchangeRateService.get(symbols, value).then((data) => setRates(data));
+    }, []);
     return (
         <>
             {rates ? (
@@ -22,13 +19,12 @@ const Table = ({ value, symbols }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {rates.title}
-                        {/* {Object.keys(rates).map((name) => (
+                        {Object.keys(rates).map((name) => (
                             <tr key={name}>
                                 <th scope="row">{name}</th>
                                 <td>{rates[name]}</td>
                             </tr>
-                        ))} */}
+                        ))}
                     </tbody>
                 </table>
             ) : (

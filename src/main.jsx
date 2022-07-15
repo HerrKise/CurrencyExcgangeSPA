@@ -31,7 +31,7 @@ const Main = () => {
                 symbols={symbols}
             />
             {stringSymbols ? (
-                <Table value={data.currency} symbols="EUR" />
+                <Table value={data.currency} symbols={stringSymbols} />
             ) : (
                 "Loading..."
             )}
