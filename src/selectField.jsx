@@ -21,27 +21,25 @@ const SelectField = ({ name, onChange, value }) => {
     return (
         <>
             {symbolsArray ? (
-                <div className="m-4 grid">
-                    <div className="g-col-4">
-                        <label htmlFor="currency selector">
-                            Choose your currency
-                        </label>
-                        <select
-                            className="form-select form-select-sm"
-                            size="3"
-                            id="currency selector"
-                            aria-label="currency selector"
-                            name={name}
-                            value={value}
-                            onChange={handleChange}
-                        >
-                            {symbolsArray.map((symbol) => (
-                                <option value={symbol.value} key={symbol.value}>
-                                    {symbol.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                <div className="m-4 w-25">
+                    <label htmlFor="currency selector">
+                        Choose your currency
+                    </label>
+                    <select
+                        className="form-select form-select-sm"
+                        size="3"
+                        id="currency selector"
+                        aria-label="currency selector"
+                        name={name}
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        {symbolsArray.map((symbol) => (
+                            <option value={symbol.value} key={symbol.value}>
+                                {symbol.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             ) : (
                 "Loading..."

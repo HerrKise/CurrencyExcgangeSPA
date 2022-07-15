@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const Main = () => {
     const [data, setData] = useState({
-        currency: ""
+        currency: "AED"
     });
     useEffect(() => {
         console.log(data.currency);
@@ -21,6 +21,7 @@ const Main = () => {
                 onChange={handleChange}
                 value={data.currency}
             />
+            <div>Current currency: {data.currency}</div>
         </>
     );
 };
