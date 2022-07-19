@@ -1,7 +1,8 @@
 import SelectField from "./components/selectField";
 import { useEffect, useState } from "react";
 import Table from "./components/table";
-import fetchAll from "./api/symbols.api";
+// import fetchAll from "./api/symbols.api";
+import symbolsService from "./services/symbols.service";
 
 const Main = () => {
     const [data, setData] = useState({
@@ -9,7 +10,8 @@ const Main = () => {
     });
     const [symbols, setSymbols] = useState();
     useEffect(() => {
-        fetchAll().then((data) => setSymbols(data.symbols));
+        symbolsService.fetch().then((data) => setSymbols(data));
+        // fetchAll().then((data) => setSymbols(data.symbols));
     }, []);
     useEffect(() => {
         console.log(symbols);
@@ -30,12 +32,12 @@ const Main = () => {
                 value={data.currency}
                 symbols={symbols}
             />
+            <div>Current currency: {data.currency}</div>
             {stringSymbols ? (
                 <Table value={data.currency} symbols={stringSymbols} />
             ) : (
                 "Loading..."
             )}
-            <div>Current currency: {data.currency}</div>
         </>
     );
 };
