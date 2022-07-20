@@ -1,21 +1,13 @@
-import { useEffect, useState } from "react";
 // import getRates from "../api/exchangeRate.api";
 import PropTypes from "prop-types";
-import exchangeRateService from "../services/exchangeRate.service";
 
-const Table = ({ value, symbols }) => {
-    const [rates, setRates] = useState();
-    useEffect(() => {
-        exchangeRateService.get(symbols, value).then((data) => setRates(data));
-        // getRates().then((data) => setRates(data.rates));
-    }, [value]);
+const Table = ({ rates }) => {
     const size = 8;
     const ratesCrop = [];
     if (rates) {
         for (let i = 0; i < Math.ceil(Object.keys(rates).length / size); i++) {
             ratesCrop[i] = Object.keys(rates).slice(i * size, i * size + size);
         }
-        console.log(ratesCrop);
     }
     return (
         <>
@@ -53,8 +45,7 @@ const Table = ({ value, symbols }) => {
 };
 
 Table.propTypes = {
-    symbols: PropTypes.string,
-    value: PropTypes.string
+    rates: PropTypes.object
 };
 
 export default Table;

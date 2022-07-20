@@ -5,7 +5,7 @@ const convertEndpoint = "/fixer/convert?";
 const convertService = {
     get: async (to, from, amount) => {
         const { data } = await httpService.get(
-            convertEndpoint + "to=" + to + "&from=" + from + "&amount=" + amount
+            convertEndpoint + `to=${to}&from=${from}&amount=${amount}`
         );
         return data.result;
     }
